@@ -32,6 +32,7 @@ const bookSchema = new mongoose.Schema(
     likes: { type: Number, default: 0 },
     coverImage: { type: String, required: true, max: 1 },
     content: { type: String, required: true },
+    userId: { type: String, required: true },
   },
   {
     timestamps: { type: String, required: true },
@@ -45,6 +46,7 @@ const Book = new mongoose.model("book", bookSchema);
 const publicationSchema = new mongoose.Schema(
   {
     name: { type: String },
+    bookId: { type: String, required: true },
   },
   {
     timestamps: { type: String, required: true },
@@ -58,6 +60,8 @@ const Publication = new mongoose.model("publication", publicationSchema);
 const commentSchema = new mongoose.Schema(
   {
     body: { type: String },
+    userId: { type: String, required: true },
+    bookId: { type: String, required: true },
   },
   {
     timestamps: { type: String, required: true },
